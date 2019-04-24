@@ -11,8 +11,9 @@ namespace core_zip
         }
         static void Main(string[] args)
         {
-            string folder2zip = "";
-            string zipFilename = "";
+            string inFolder2zip = "";
+            string inZipFilename = "";
+            string inOverwrite = "";
             bool overwrite = false;
 
             if (args.Length == 0)
@@ -22,8 +23,10 @@ namespace core_zip
                 folder2zip = Console.ReadLine();
                 Console.WriteLine("What would you like to Call the zip?");
                 zipFilename = Console.ReadLine();
+                Console.WriteLine("Overwrite any existing zip? [y/N]");
+                inOverwrite = Console.ReadLine();
 
-                Zipper(folder2zip, zipFilename, overwrite);
+                Zipper(inFolder2zip, inZipFilename, overwrite);
             }
             else
             {
