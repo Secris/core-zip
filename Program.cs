@@ -27,7 +27,7 @@ namespace core_zip
                 {
                     Console.WriteLine("Would you like to overwrite the existing file? [y/N]");
                     inOverwrite = Console.ReadLine();
-                    
+
                     if (inOverwrite == "y" || inOverwrite == "Y")
                     {
                         File.Delete(inZipFilename);
@@ -45,9 +45,28 @@ namespace core_zip
             }
             else
             {
-                Console.WriteLine("Args detected");
+                if (args.Length == 2)
+                {
+                    if (!(File.Exists(args[1])))
+                    {
+                        Zipper(args[0], args[1]);
+                    }
+                }
+                else if (args.Length == 3 && args[0] == "-f")
+                {
+                    if(File.Exists(args[2]))
+                    {
+                        File.Delete(args[2]);
+                    }
+                    Zipper(args[1], args[2]);
+                }
+                else
+                {
+                    Console.WriteLine("Improper usage");
+                    Console.WriteLine("Proper usage: core-zip [-f] foldername zipfilename");
+                }
             }
-            
+
         }
     }
 }
